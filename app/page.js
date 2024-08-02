@@ -12,26 +12,14 @@ import {
   deleteDoc,
   doc
 } from 'firebase/firestore'
-
-// const style = {
-//   position: 'absolute',
-//   top: '50%',
-//   left: '50%',
-//   transform: 'translate(-50%, -50%)',
-//   width: 400,
-//   bgcolor: 'white',
-//   border: '2px solid #000',
-//   boxShadow: 24,
-//   p: 4,
-//   display: 'flex',
-//   flexDirection: 'column',
-//   gap: 3,
-// }
+import Filter from './components/Filter'
 
 export default function Home() {
   const [inventory, setInventory] = useState([])
   const [open, setOpen] = useState(false)
   const [itemName, setItemName] = useState('')
+  const [regex, setRegex] = useState(RegExp)
+  const [itemsToShow, setItemsToShow] = useState([])
 
   const updateInventory = async () => {
     const snapshot = query(collection(firestore, 'inventory'))
@@ -42,6 +30,11 @@ export default function Home() {
     })
     setInventory(inventoryList)
   }
+
+  useEffect(() => {
+    console.log(itemsToShow)
+    setItemsToShow(inventory.filter(item => regex.test(item.name)))
+  }, [regex, inventory])
 
   const removeItem = async (item) => {
     const docRef = doc(collection(firestore, 'inventory'), item)
@@ -90,6 +83,7 @@ export default function Home() {
       alignItems="center" 
       gap={2}
     >
+      <Filter setRegex={setRegex}></Filter>
       <Modal open={open} onClose={handleClose}>
         <Box 
           position="absolute" 
@@ -142,7 +136,7 @@ export default function Home() {
           <Typography variant="h2" color= "#333"> Inventory Items</Typography>
         </Box>  
       <Stack width="800px" height="300px" spacing={2} overflow="auto">
-        {inventory.map(({name, quantity}) => (
+        {itemsToShow.map(({name, quantity}) => (
           <Box 
               key={name}
               width="100%" 
