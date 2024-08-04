@@ -14,23 +14,17 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Feature list
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- [x] Implement basic functionality for inventory management
+- [x] Utilize Firestore (Firebase)
+- [x] Seperate functionality into multiple components for SRP
+- [ ] Come up with a palette and theme for design
+- [ ] Integrate Auth with Clark/Firebase
+- [ ] Implement landing page
+- [ ] Implement "trial" pantry tracker with minimal features: No saving, no camera option
+- [ ] Implement "full" pantry tracker after signin
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Feedback
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+If you have any feature requests, please open an issue describing the feature, if you have any direct feedback, please leave it at my discord!
