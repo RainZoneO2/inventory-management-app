@@ -1,28 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import {
-  Modal,
-  Stack,
-  TextField,
-  Button,
-  Box,
-  Typography,
-} from "@mui/material";
-import InventoryDisplay from "./components/InventoryDisplay";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  return (
-    <Box
-      width="100vw"
-      height="100vh"
-      display="flex"
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
-      gap={2}
-    >
-      <InventoryDisplay />
-    </Box>
-  );
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace("/landing");
+  }, [router]);
+
+  return null;
 }

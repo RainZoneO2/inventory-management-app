@@ -86,7 +86,20 @@ const InventoryDisplay = () => {
       alignItems="center"
       gap={2}
     >
-      <Stack direction="row" spacing={2}>
+      {/* <Box
+        width="800px"
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+        padding={2.5}
+        mb={-3}
+      > </Box>*/}
+      <Stack
+        direction="row"
+        alignItems="center"
+        justifyContent="space-between"
+        spacing={2}
+      >
         <Filter setRegex={setRegex} />
         <Button
           variant="contained"
@@ -100,8 +113,8 @@ const InventoryDisplay = () => {
       <ModalDialog handleClose={handleClose} addItem={addItem} open={open} />
       <Box border=" 1px solid #333">
         <Box
-          width="800px"
-          height="100px"
+          width="100%"
+          height="25%"
           bgcolor="#ADD8E6"
           display="flex"
           alignItems="center"

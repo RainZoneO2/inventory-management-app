@@ -1,27 +1,34 @@
-import { Typography } from "@mui/material"
-import { useEffect, useState } from "react"
+import { Box, Typography, TextField } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import { useEffect, useState } from "react";
 
-const Filter = ({setRegex}) => {
-    const [filter, setFilter] = useState('')
+const Filter = ({ setRegex }) => {
+  const [filter, setFilter] = useState("");
 
-    const escapeRegex = (string) => {
-        return string.replace(/[/\-\\^$*+?.()|[\]{}]/g, '\\$&')
-    }
-    
-    useEffect(() => {
-        const regex = new RegExp(`^(${escapeRegex(filter)})`, 'i')
-        setRegex(regex)
-    }, [filter])
-    
-    const handleFilterChange = (event) => {
-        setFilter(event.target.value)
-    }
+  const escapeRegex = (string) => {
+    return string.replace(/[/\-\\^$*+?.()|[\]{}]/g, "\\$&");
+  };
 
-    return (
-        <Typography variant="h6">
-            Filter for: <input value={filter} onChange={handleFilterChange} />
-        </Typography>
-    )
-}
+  useEffect(() => {
+    const regex = new RegExp(`^(${escapeRegex(filter)})`, "i");
+    setRegex(regex);
+  }, [filter]);
 
-export default Filter
+  const handleFilterChange = (event) => {
+    setFilter(event.target.value);
+  };
+
+  return (
+    <Box sx={{ display: "flex", alignItems: "flex-end" }}>
+      <SearchIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
+      <TextField
+        label="Search"
+        variant="outlined"
+        value={filter}
+        onChange={handleFilterChange}
+      />
+    </Box>
+  );
+};
+
+export default Filter;

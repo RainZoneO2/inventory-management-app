@@ -22,9 +22,10 @@ bun dev
 - [ ] Come up with a palette and theme for design
 - [ ] Integrate Auth with Clark/Firebase
 - [ ] Implement landing page
+- [ ] Add more details to inventory management: Expiry date / Bought on date
 - [ ] Implement "trial" pantry tracker with minimal features: No saving, no camera option
 - [ ] Implement "full" pantry tracker after signin
 
 ### Feedback
 
-If you have any feature requests, please open an issue describing the feature, if you have any direct feedback, please leave it at my discord!
+If you have any feature requests, please open an issue describing the feature, if you have any direct feedback, please leave it at my discord: `.rainzone_`
