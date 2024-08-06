@@ -26,11 +26,6 @@ const InventoryDisplay = () => {
 
   const { getToken, userId } = useAuth();
 
-  // Handle if the user is not signed in
-  if (!userId) {
-    return <p>You need to sign in with Clerk to access this page.</p>;
-  }
-
   const signIntoFirebaseWithClerk = useCallback(async () => {
     const token = await getToken({ template: "integration_firebase" });
     const userCredentials = await signInWithCustomToken(auth, token || "");
