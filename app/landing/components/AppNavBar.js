@@ -10,6 +10,7 @@ import { MenuItem } from "@mui/material/MenuItem";
 import { Drawer } from "@mui/material/Drawer";
 import { Menu } from "@mui/material/Menu";
 // import { MenuIcon } from "@mui/icons-material/MenuIcon";
+import { SignOutButton } from "@clerk/nextjs";
 import { Divider } from "@mui/material/Divider";
 import Link from "next/link";
 
