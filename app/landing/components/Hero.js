@@ -1,12 +1,5 @@
-import {
-  Box,
-  Container,
-  Stack,
-  Typography,
-  TextField,
-  Button,
-  Link,
-} from "@mui/material";
+import { Box, Container, Stack, Typography, Button } from "@mui/material";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -37,6 +30,7 @@ export default function Hero() {
               variant="h1"
               sx={{
                 fontSize: "clamp(3rem, 10vw, 4rem)",
+                color: "#ff0000",
               }}
             >
               Pantry&nbsp;
@@ -59,33 +53,12 @@ export default function Hero() {
             useFlexGap
             sx={{ pt: 2, width: { xs: "100%", sm: "auto" } }}
           >
-            {/* <TextField
-              id="outlined-basic"
-              hiddenLabel
-              size="small"
-              variant="outlined"
-              aria-label="Enter your email address"
-              placeholder="Your email address"
-              inputProps={{
-                autoComplete: "off",
-                "aria-label": "Enter your email address",
-              }}
-            /> */}
-            <Button variant="contained" color="primary" href="/trial">
-              Try now
-            </Button>
-          </Stack>
-          {/* <Typography
-            variant="caption"
-            textAlign="center"
-            sx={{ opacity: 0.8 }}
-          >
-            By clicking &quot;Start now&quot; you agree to our&nbsp;
-            <Link href="#" color="primary">
-              Terms & Conditions
+            <Link href="/trial" passHref>
+              <Button variant="contained" color="primary">
+                Try now
+              </Button>
             </Link>
-            .
-          </Typography> */}
+          </Stack>
         </Stack>
         <Box id="image" />
       </Container>

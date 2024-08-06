@@ -1,11 +1,4 @@
-import {
-  Box,
-  Button,
-  Modal,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 
 const InventoryEntry = ({ name, quantity, addItem, removeItem }) => {
   return (

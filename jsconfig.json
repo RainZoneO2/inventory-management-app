@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "skipLibCheck": true,
+    "strict": true,
+    "incremental": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "jsx": "react-jsx",
     "paths": {
       "@/*": ["./*"]

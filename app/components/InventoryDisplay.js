@@ -1,12 +1,5 @@
 import { firestore } from "@/firebase";
-import {
-  Box,
-  Button,
-  Modal,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import {
   collection,
   deleteDoc,

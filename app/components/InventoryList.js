@@ -1,11 +1,4 @@
-import {
-  Box,
-  Button,
-  Modal,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Stack } from "@mui/material/Stack";
 import InventoryEntry from "./InventoryEntry";
 
 const InventoryList = ({ itemsToShow, addItem, removeItem }) => {
