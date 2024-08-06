@@ -1,17 +1,25 @@
 "use client";
-
-import { useState, useEffect } from "react";
-import {
-  Modal,
-  Stack,
-  TextField,
-  Button,
-  Box,
-  Typography,
-} from "@mui/material";
+import { Box } from "@mui/material/Box";
 import InventoryDisplay from "../components/InventoryDisplay";
+import { useAuth } from "@clerk/nextjs";
+import { Typography } from "@mui/material";
 
 export default function Page() {
+  const { getToken, userId } = useAuth();
+
+  if (!userId) {
+    return (
+      <Typography>You need to be signed in to access this page.</Typography>
+    );
+  }
+
+  const signIntoFirebaseWithClerk = async () => {
+    const token = await getToken({ template: "integration_firebase" });
+
+    const userCredentials = await signInWithCustomToken(auth, token || "");
+    console.log("User:", userCredentials.user);
+  };
+
   return (
     <Box
       width="100vw"
