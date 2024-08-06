@@ -77,7 +77,7 @@ export default function AppNavBar() {
                 px: 0,
               }}
             >
-              <img alt="logo of site" style={logoStyle} />
+              {/* <img alt="logo of site" style={logoStyle} /> */}
               <Box sx={{ display: { xs: "none", md: "flex" }, ml: 2 }}>
                 <Button
                   onClick={() => scrollToSection("about")}

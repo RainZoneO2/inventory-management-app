@@ -9,7 +9,7 @@ import {
   query,
   setDoc,
 } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useAuth } from "@clerk/clerk-react";
 import { getAuth, signInWithCustomToken } from "firebase/auth";
 import Filter from "./Filter";
@@ -31,16 +31,15 @@ const InventoryDisplay = () => {
     return <p>You need to sign in with Clerk to access this page.</p>;
   }
 
-  const signIntoFirebaseWithClerk = async () => {
+  const signIntoFirebaseWithClerk = useCallback(async () => {
     const token = await getToken({ template: "integration_firebase" });
-
     const userCredentials = await signInWithCustomToken(auth, token || "");
     // The userCredentials.user object can call the methods of
     // the Firebase platform as an authenticated user.
     console.log("User:", userCredentials.user);
-  };
+  }, [getToken]);
 
-  const updateInventory = async () => {
+  const updateInventory = useCallback(async () => {
     const snapshot = query(collection(firestore, "inventory"));
     const docs = await getDocs(snapshot);
     const inventoryList = [];
@@ -48,7 +47,17 @@ const InventoryDisplay = () => {
       inventoryList.push({ name: doc.id, ...doc.data() });
     });
     setInventory(inventoryList);
-  };
+  }, []);
+
+  useEffect(() => {
+    if (!userId) return;
+
+    const authenticate = async () => {
+      await signIntoFirebaseWithClerk();
+      await updateInventory();
+    };
+    authenticate();
+  }, [signIntoFirebaseWithClerk, updateInventory, userId]);
 
   useEffect(() => {
     setItemsToShow(inventory.filter((item) => regex.test(item.name)));
@@ -81,14 +90,6 @@ const InventoryDisplay = () => {
     }
     await updateInventory();
   };
-
-  useEffect(() => {
-    const authenticate = async () => {
-      await signIntoFirebaseWithClerk();
-      await updateInventory();
-    };
-    authenticate();
-  }, []);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
